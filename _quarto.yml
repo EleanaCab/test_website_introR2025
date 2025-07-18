@@ -4,18 +4,18 @@ project:
 website:
   title: "Eleana_Cabello"
   navbar:
-    left:
-      - href: index.qmd
+    right:
+      - icon: house
+        href: index.qmd
         text: Home
-      - href: projects.qmd
+      - icon: hammer
+        href: projects.qmd
         text: Projects
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: styles.scss
+    mainfont: Bitcount 
     toc: true
 
 

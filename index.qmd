@@ -5,18 +5,23 @@ toc: true
 about:
   template: trestles
   links:
-    - text: GitHub
+    - icon: github
+      text: GitHub
       href: link
-    - text: Email
+    - icon: linkedin
+      text: LinkedIn
+      href: link
+    - icon: mailbox-flag
+      text: Email
       href: link
 ---
 
 ::: {.column-page}
 
-## Bio
+# Bio
 
-## Research Goals
+# Research Goals
 
-## Experience
+# Experience
 
 :::

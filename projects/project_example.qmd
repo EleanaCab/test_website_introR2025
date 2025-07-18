@@ -1,5 +1,6 @@
 ---
 title: "Project Template"
+author: Eleana Cabello
 date: 2025-07-18
 draft: false
 editor_options: 
@@ -160,7 +161,6 @@ assign_1 |>
   scale_x_datetime(
             date_breaks = "5 hour",
             date_labels = "%H:%M") +
-  facet_grid(~lesson_name, scales='free_y') + 
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Time', y='# Attempts')
@@ -229,9 +229,10 @@ assign_2 |>
   scale_x_datetime(
             date_breaks = "5 hour",
             date_labels = "%H:%M") +
-  facet_grid(~lesson_name, scales='free_y') + 
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Time', y='# Attempts')
 ```
+
+
 
