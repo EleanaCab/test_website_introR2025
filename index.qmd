@@ -1,6 +1,6 @@
 ---
 title: "Eleana Cabello"
-image: headshot.png
+image: me_headshot.jpg
 toc: true
 about:
   template: trestles
