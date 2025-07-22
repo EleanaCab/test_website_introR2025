@@ -7,13 +7,13 @@ about:
   links:
     - icon: github
       text: GitHub
-      href: link
+      url: https://github.com/EleanaCab/test_website_introR2025
     - icon: linkedin
       text: LinkedIn
-      href: link
-    - icon: mailbox-flag
+      url: link
+    - icon: airplane
       text: Email
-      href: link
+      url: mailto:eleana-cabello@ouhsc.edu
 ---
 
 ::: {.column-page}

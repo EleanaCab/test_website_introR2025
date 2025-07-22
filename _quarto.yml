@@ -15,7 +15,7 @@ website:
 format:
   html:
     theme: styles.scss
-    mainfont: Bitcount 
+    mainfont: Ubuntu 
     toc: true
 
 
