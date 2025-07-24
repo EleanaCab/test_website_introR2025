@@ -1,5 +1,5 @@
 ---
-title: "Project Template"
+title: "Assignment Habits - Intro to R Class Summer 2025"
 author: Eleana Cabello
 date: 2025-07-18
 draft: false
@@ -27,27 +27,19 @@ library(calendR)
 data <- read.csv('IntroToR-SubmissionsDecodedMasked-07212025.csv')
 ```
 
-## Cleaning
+## Tidying and Cleaning
 
 - Seperating datetime to date and time, seperate columns 
 - Cast date variable as Date
 - Turn course name to factors
-- Turn student id to factors
 
 ```{r}
 data <- data %>% separate_wider_delim(datetime, " ", names = c("date", "time"))
 data$date <- as.Date(data$date)
 data$course_name <- factor(data$course_name, levels = c('R Programming', 'Exploratory_Data_Analysis'))
-data$student_id <- factor(data$student_id)
 ```
 
 ## Quick Glimpse
-
-#### Making test directory 
-
-```{.bash}
-mkdir test
-```
 
 ```{r}
 glimpse(data)
@@ -68,6 +60,13 @@ data |>
   theme_cowplot() +
   theme(strip.text.x = element_text(size = 8)) +
   labs(x='Q #', y='# Attempts')
+```
+
+
+```{r}
+#| label: all-data
+#| fig-width: 12
+#| fig-height: 10
 
 #Dates they were completed
 data |> 
@@ -78,6 +77,13 @@ data |>
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Date', y='# Attempts')
+```
+
+
+```{r}
+#| label: all-data
+#| fig-width: 12
+#| fig-height: 10
 
 #Heatmap of dates lessons were completed
 calendar_df_all <- data %>% count(date)
@@ -90,6 +96,15 @@ calendR(from = "2025-06-29",
         gradient = TRUE,
         low.col = "white",
         special.col = "#FF0000")
+
+#Late start on the first assignment and early start on the second 
+```
+
+
+```{r}
+#| label: all-data
+#| fig-width: 12
+#| fig-height: 10
 
 #Look a the hour of the day they are completed
 data |> 
@@ -107,14 +122,17 @@ data |>
 ## Assignment 1
 
 ```{r}
+#Filtering for Assignment 1 by course_name
+assign_1 = data |> filter(course_name == 'R Programming')
+```
+
+```{r}
 #| label: assignment-1
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
 #| warning: false
 #| error: false
-
-assign_1 = data |> filter(course_name == 'R Programming')
 
 #Attempts by Question for each course-lesson
 assign_1 |>
@@ -125,10 +143,22 @@ assign_1 |>
   theme(strip.text.x = element_text(size = 8)) +
   labs(x='Q #', y='# Attempts')
 
-##Average of attempts for each lesson of Assignment
+#Students struggled with questions in Logic, subsetting vectors, and matrices and dfs
+```
+
+
+```{r}
+#| label: assignment-1
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
+
+##Average of attempts for each lesson of each Assignment
 lesson_counts_1 <- assign_1 |> count(lesson_name, question_number, student_id)
 lesson_counts_1$question_number = as.factor(lesson_counts_1$question_number)
-lesson_avgs_1 <-  lesson_counts_1 %>% group_by(lesson_name, question_number) %>% summarise(avg = mean(n))
+lesson_avgs_1 <-  lesson_counts_1 %>% select(-c(student_id)) %>% group_by(lesson_name, question_number) %>% summarise(avg = mean(n))
 
 ##Compare for all lessons
 lesson_avgs_1 |>
@@ -139,6 +169,19 @@ lesson_avgs_1 |>
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(y='Avg Attempts', x='Lesson')
 
+#Higher average attempts in lessons from logic, matrices and dfs, subsetting vectors
+#Understandable new data structures they are getting familiar with and logical thinking 
+```
+
+
+```{r}
+#| label: assignment-1
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
+
 #Looking at dates completed
 assign_1 |> 
   ggplot(aes(x=date, y=attempt)) +
@@ -147,6 +190,16 @@ assign_1 |>
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Date', y='# Attempts')
+```
+
+
+```{r}
+#| label: assignment-1
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
 
 #Calendar Heatmap
 calendar_df_1 <- assign_1 %>% count(date)
@@ -160,19 +213,39 @@ calendR(from = "2025-06-29",
         low.col = "white",
         special.col = "#FF0000")
 
+#Busiest submission date was 2 days before! Nice early birds!
+```
+
+
+```{r}
+#| label: assignment-1
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
+
 #Looking at time of completion for each lesson
 assign_1 |> 
   ggplot(aes(x=as.POSIXct(time, format="%H:%M"), y=attempt)) +
   geom_col() +
   scale_x_datetime(
-            date_breaks = "5 hour",
+            date_breaks = "2 hour",
             date_labels = "%H:%M") +
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Time', y='# Attempts')
+
+# Evening submissions are popular, some early risers among us 
 ```
 
 ## Assignment 2
+
+```{r}
+#Filtering for Assignment 2
+assign_2 = data |> filter(course_name == 'Exploratory_Data_Analysis')
+```
+
 
 ```{r}
 #| label: assignment-2
@@ -181,8 +254,6 @@ assign_1 |>
 #| message: false
 #| warning: false
 #| error: false
-
-assign_2 = data |> filter(course_name == 'Exploratory_Data_Analysis')
 
 #Attempts by Question for each course-lesson
 assign_2 |> 
@@ -193,10 +264,22 @@ assign_2 |>
   theme(strip.text.x = element_text(size = 8)) +
   labs(x='Q #', y='# Attempts')
 
+#High number of attempts in plotting systems lessons and principles of analyti graphs
+```
+
+
+```{r}
+#| label: assignment-2
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
+
 ##Average of attempts for each lesson of Assignment
 lesson_counts_2 <- assign_2 |> count(lesson_name, question_number, student_id)
 lesson_counts_2$question_number = as.factor(lesson_counts_2$question_number)
-lesson_avgs_2 <-  lesson_counts_2 %>% group_by(lesson_name, question_number) %>% summarise(avg = mean(n))
+lesson_avgs_2 <- lesson_counts_2 %>% select(-c(student_id)) %>% group_by(lesson_name, question_number) %>% summarise(avg = mean(n))
 
 ##Compare for all lessons
 lesson_avgs_2 |>
@@ -207,14 +290,17 @@ lesson_avgs_2 |>
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(y='Avg Attempts', x='Lesson')
 
-#Looking at dates completed
-assign_2 |> 
-  ggplot(aes(x=date, y=attempt)) +
-  geom_col() +
-  facet_grid(~lesson_name, scales='free_y') + 
-  theme_cowplot() +
-  theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
-  labs(x='Date', y='# Attempts')
+#Not that high of an average per lesson 
+```
+
+
+```{r}
+#| label: assignment-2
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
 
 #Calendar Heatmap
 calendar_df_2 <- assign_2 %>% count(date)
@@ -228,6 +314,18 @@ calendR(from = "2025-07-01",
         low.col = "white",
         special.col = "#FF0000")
 
+# High submission dates early and on day of soft due date
+```
+
+
+```{r}
+#| label: assignment-2
+#| fig-width: 10
+#| fig-height: 6
+#| message: false
+#| warning: false
+#| error: false
+
 #Looking at time of completion for each lesson
 assign_2 |> 
   ggplot(aes(x=as.POSIXct(time, format="%H:%M"), y=attempt)) +
@@ -238,6 +336,8 @@ assign_2 |>
   theme_cowplot() +
   theme(axis.text.x = element_text(angle=90, hjust=1), strip.text.x = element_text(size = 8)) +
   labs(x='Time', y='# Attempts')
+
+#Some students are up very late, but most work in the evening after hours
 ```
 
 
