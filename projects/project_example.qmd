@@ -48,7 +48,7 @@ glimpse(data)
 ## Looking at Class Data All Together
 
 ```{r}
-#| label: all-data
+#| label: all-data-1
 #| fig-width: 12
 #| fig-height: 10
 
@@ -64,7 +64,7 @@ data |>
 
 
 ```{r}
-#| label: all-data
+#| label: all-data-2
 #| fig-width: 12
 #| fig-height: 10
 
@@ -81,7 +81,7 @@ data |>
 
 
 ```{r}
-#| label: all-data
+#| label: all-data-3
 #| fig-width: 12
 #| fig-height: 10
 
@@ -102,7 +102,7 @@ calendR(from = "2025-06-29",
 
 
 ```{r}
-#| label: all-data
+#| label: all-data-4
 #| fig-width: 12
 #| fig-height: 10
 
@@ -127,7 +127,7 @@ assign_1 = data |> filter(course_name == 'R Programming')
 ```
 
 ```{r}
-#| label: assignment-1
+#| label: assignment-1-1
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -148,7 +148,7 @@ assign_1 |>
 
 
 ```{r}
-#| label: assignment-1
+#| label: assignment-1-2
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -175,7 +175,7 @@ lesson_avgs_1 |>
 
 
 ```{r}
-#| label: assignment-1
+#| label: assignment-1-3
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -194,7 +194,7 @@ assign_1 |>
 
 
 ```{r}
-#| label: assignment-1
+#| label: assignment-1-4
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -218,7 +218,7 @@ calendR(from = "2025-06-29",
 
 
 ```{r}
-#| label: assignment-1
+#| label: assignment-1-5
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -248,7 +248,7 @@ assign_2 = data |> filter(course_name == 'Exploratory_Data_Analysis')
 
 
 ```{r}
-#| label: assignment-2
+#| label: assignment-2-1
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -269,7 +269,7 @@ assign_2 |>
 
 
 ```{r}
-#| label: assignment-2
+#| label: assignment-2-2
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -295,7 +295,7 @@ lesson_avgs_2 |>
 
 
 ```{r}
-#| label: assignment-2
+#| label: assignment-2-3
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
@@ -319,7 +319,7 @@ calendR(from = "2025-07-01",
 
 
 ```{r}
-#| label: assignment-2
+#| label: assignment-2-4
 #| fig-width: 10
 #| fig-height: 6
 #| message: false
