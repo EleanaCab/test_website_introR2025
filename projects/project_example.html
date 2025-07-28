@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reading-in-csv-file-and-checking-out-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-in-csv-file-and-checking-out-data">Reading in CSV file and Checking Out Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'IntroToR-SubmissionsDecodedMasked-07212025.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'IntroToR-SubmissionsDecodedMasked-07282025.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="tidying-and-cleaning" class="level2">
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6,632
+<pre><code>Rows: 7,152
 Columns: 9
 $ course_name     &lt;fct&gt; Exploratory_Data_Analysis, Exploratory_Data_Analysis, …
 $ lesson_name     &lt;chr&gt; "Principles_of_Analytic_Graphs", "Principles_of_Analyt…
@@ -282,7 +282,7 @@ $ student_id      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Heatmap of dates lessons were completed</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>calendar_df_all <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">count</span>(date)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>days_all <span class="ot">&lt;-</span> calendar_df_all<span class="sc">$</span>n</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>days_all <span class="ot">&lt;-</span> <span class="fu">c</span>(days_all, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>days_all <span class="ot">&lt;-</span> <span class="fu">c</span>(days_all, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calendR</span>(<span class="at">from =</span> <span class="st">"2025-06-29"</span>,</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">to =</span> <span class="st">"2025-07-30"</span>,</span>
@@ -478,7 +478,7 @@ $ student_id      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calendar Heatmap</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>calendar_df_2 <span class="ot">&lt;-</span> assign_2 <span class="sc">%&gt;%</span> <span class="fu">count</span>(date)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>days_2 <span class="ot">&lt;-</span> calendar_df_2<span class="sc">$</span>n</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>days_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">7</span>), days_2, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">9</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>days_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">7</span>), days_2, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">calendR</span>(<span class="at">from =</span> <span class="st">"2025-07-01"</span>,</span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">to =</span> <span class="st">"2025-07-30"</span>,</span>
