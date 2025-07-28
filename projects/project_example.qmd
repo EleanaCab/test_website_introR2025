@@ -24,7 +24,7 @@ library(calendR)
 ## Reading in CSV file and Checking Out Data
 
 ```{r}
-data <- read.csv('IntroToR-SubmissionsDecodedMasked-07212025.csv')
+data <- read.csv('IntroToR-SubmissionsDecodedMasked-07282025.csv')
 ```
 
 ## Tidying and Cleaning
@@ -88,7 +88,7 @@ data |>
 #Heatmap of dates lessons were completed
 calendar_df_all <- data %>% count(date)
 days_all <- calendar_df_all$n
-days_all <- c(days_all, rep(0,10))
+days_all <- c(days_all, rep(0,8))
 
 calendR(from = "2025-06-29",
         to = "2025-07-30",
@@ -305,7 +305,7 @@ lesson_avgs_2 |>
 #Calendar Heatmap
 calendar_df_2 <- assign_2 %>% count(date)
 days_2 <- calendar_df_2$n
-days_2 <- c(rep(0,7), days_2, rep(0,9))
+days_2 <- c(rep(0,7), days_2, rep(0,7))
 
 calendR(from = "2025-07-01",
         to = "2025-07-30",
